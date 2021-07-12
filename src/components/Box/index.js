@@ -1,8 +1,8 @@
 import { BoxStyled } from './styles'
 
-export function Box({ children }) {
+export function Box({ children, ...props }) {
   return (
-    <BoxStyled>
+    <BoxStyled {...props}>
       { children }
     </BoxStyled>
   )
