@@ -7,7 +7,11 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+<<<<<<< HEAD
         "plugin:@next/next/recommended"
+=======
+        "eslint-plugin-next"
+>>>>>>> c7fe664f9b58654b63480eb11597f188aebe8b5a
     ],
     "parserOptions": {
         "ecmaFeatures": {
