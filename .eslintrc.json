@@ -16,7 +16,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "next"
     ],
     "rules": {
       "react/react-in-jsx-scope": "off",
