@@ -17,8 +17,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "eslint-plugin-next"
+        "react"
     ],
     "rules": {
       "react/react-in-jsx-scope": "off",
