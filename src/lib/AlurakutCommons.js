@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import NextLink from 'next/link';
