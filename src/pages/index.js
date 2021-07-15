@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Grid } from '../components/Grid'
 import { Box } from '../components/Box'
 import { ProfileSideBar } from '../components/ProfileSideBar'
@@ -6,6 +8,9 @@ import { ProfileRelations } from '../components/ProfileRelations'
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../lib/AlurakutCommons'
 
 export default function Home() {
+  const [communities, setComunites] = useState([])
+  const [newCommunitieName, setNewCommunitieName] = useState('')
+  const [newCommunitieURL, setNewCommunitieURL] = useState('')
   const githubUser = 'pedro-henrique-sb'
   const favoritePersons = [
     'omariosouto',
@@ -13,6 +18,21 @@ export default function Home() {
     'maykbrito',
     'filipedeschamps'
   ]
+
+  function handlePreventDefault(event) {
+    event.preventDefault()
+
+    if(newCommunitieName !== '' && newCommunitieURL !== '') {
+      setComunites([...communities, {
+        key: new Date().toISOString(),
+        name: newCommunitieName,
+        linkTo: '#',
+        capeImgLink: newCommunitieURL,
+      }])
+    } else {
+      throw new Error('Prencha todos os campos')
+    }
+  }
 
   return (
     <>
