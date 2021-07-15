@@ -56,6 +56,8 @@ export function AlurakutMenu({ githubUser }) {
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
   background-color: #308BC5;
+  position: fixed;
+  z-index: 100;
 
   .alurakutMenuProfileSidebar {
     background: white;
@@ -309,7 +311,8 @@ OrkutNostalgicIconSet.List = styled.ul`
       display: block;
       font-style: italic;
     }
-    .OrkutNostalgicIconSet__number {
+    .OrkutNostalgicIconSet__number,
+    .OrkutNostalgicIconSet__iconComplex {
       min-width: 15px;
       display: flex;
       align-items: center;
