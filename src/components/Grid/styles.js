@@ -7,6 +7,7 @@ export const GridStyled = styled.main`
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
 
   .profileArea {
     display: none;
