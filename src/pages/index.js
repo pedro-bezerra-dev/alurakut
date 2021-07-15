@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Grid } from '../components/Grid'
 import { Box } from '../components/Box'
 import { ProfileSideBar } from '../components/ProfileSideBar'
-import { ProfileRelations } from '../components/ProfileRelations'
+import { AsideBanner } from '../components/AsideBanner'
 
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../lib/AlurakutCommons'
 
@@ -13,10 +13,30 @@ export default function Home() {
   const [newCommunitieURL, setNewCommunitieURL] = useState('')
   const githubUser = 'pedro-henrique-sb'
   const favoritePersons = [
-    'omariosouto',
-    'diego3g',
-    'maykbrito',
-    'filipedeschamps'
+    {
+      key: 'omariosouto',
+      name: 'omariosouto',
+      linkTo: 'https://github.com/omariosouto',
+      capeImgLink: 'https://github.com/omariosouto.png'
+    },
+    {
+      key: 'diego3g',
+      name: 'diego3g',
+      linkTo: 'https://github.com/diego3g',
+      capeImgLink: 'https://github.com/diego3g.png'
+    },
+    {
+      key: 'maykbrito',
+      name: 'maykbrito',
+      linkTo: 'https://github.com/maykbrito',
+      capeImgLink: 'https://github.com/maykbrito.png'
+    },
+    {
+      key: 'filipedeschamps',
+      name: 'filipedeschamps',
+      linkTo: 'https://github.com/filipedeschamps',
+      capeImgLink: 'https://github.com/filipedeschamps.png'
+    }
   ]
 
   function handlePreventDefault(event) {
@@ -36,7 +56,7 @@ export default function Home() {
 
   return (
     <>
-      <AlurakutMenu />
+      <AlurakutMenu githubUser={githubUser} />
       <Grid>
         <div
           className="profileArea"
@@ -57,6 +77,32 @@ export default function Home() {
 
             <OrkutNostalgicIconSet />
           </Box>
+          <Box>
+            <h2
+              style={{
+                marginBottom: '20px'
+              }}
+            >O que você deseja fazer?</h2>
+            <form onSubmit={(event) => handlePreventDefault(event)}>
+              <input
+                type="text"
+                name="title"
+                aria-label="Qual vai ser o nome da sua comunidade?"
+                placeholder="Qual vai ser o nome da sua comunidade?"
+                onChange={({ target }) => setNewCommunitieName(target.value)}
+                value={newCommunitieName}
+              />
+              <input
+                type="text"
+                name="image"
+                aria-label="Coloque uma URL para usarmos de capa"
+                placeholder="Coloque uma URL para usarmos de capa"
+                onChange={({ target }) => setNewCommunitieURL(target.value)}
+                value={newCommunitieURL}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </Box>
         </div>
         <div
           className="profileRelationsArea"
@@ -64,23 +110,8 @@ export default function Home() {
             gridArea: 'profileRelationsArea',
           }}
         >
-          <ProfileRelations>
-            <h2 className="smallTitle">Pessoas da comunidade ({favoritePersons.length})</h2>
-
-            <ul>
-              {favoritePersons.map((person) => {
-                return (
-                  <li key={person}>
-                    <a href={`/users/${person}`}>
-                      <img src={`https://github.com/${person}.png`} alt="Avatar" />
-                      <span>{person}</span>
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-          </ProfileRelations>
-          <Box></Box>
+            <AsideBanner arrayTarget={favoritePersons} title="Pessoas da comunidade" />
+            <AsideBanner arrayTarget={communities} title="Comunidades" />
         </div>
       </Grid>
     </>
