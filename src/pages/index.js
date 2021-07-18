@@ -137,7 +137,7 @@ export default function Home({ datoApiToken }) {
             gridArea: 'profileRelationsArea',
           }}
         >
-            <AsideBanner arrayTarget={favoritePersons} title="Pessoas da comunidade" />
+            <AsideBanner arrayTarget={communityPersons} title="Pessoas da comunidade" />
             <AsideBanner arrayTarget={communities} title="Comunidades" />
         </div>
       </Grid>
