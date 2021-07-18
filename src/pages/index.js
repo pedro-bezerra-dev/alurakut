@@ -21,16 +21,28 @@ export default function Home({ datoApiToken }) {
   const [newPersonLogin, setNewPersonLogin] = useState('')
   const { followers } = useFollowers(githubUser)
 
-  function handlePreventDefault(event) {
+  function handleCreateCommunity(event) {
     event.preventDefault()
 
-    if(newCommunitieName !== '' && newCommunitieURL !== '') {
-      setComunites([...communities, {
-        key: new Date().toISOString(),
+    if(newCommunitieName !== '' && newCommunitieUrlImage !== '') {
+      const newCommunity = {
         name: newCommunitieName,
         linkTo: '#',
-        capeImgLink: newCommunitieURL,
-      }])
+        urlImage: newCommunitieUrlImage,
+        creatorSlug: 'pedro',
+      }
+      createCommunity(newCommunity)
+    } else {
+      throw new Error('Prencha todos os campos')
+    }
+  }
+
+  function handleAddPerson(event) {
+    event.preventDefault()
+
+    if(newPersonLogin !== '') {
+      const login = newPersonLogin.replaceAll(/,|"|'|\//g, '')
+      addCommunityPerson(login)
     } else {
       throw new Error('Prencha todos os campos')
     }
