@@ -145,3 +145,11 @@ export default function Home({ datoApiToken }) {
     </>
   )
 }
+
+export async function getStaticProps() {
+  return {
+    props: {
+      datoApiToken: process.env.DATO_API_READ_ONLY_TOKEN
+    },
+  }
+}
