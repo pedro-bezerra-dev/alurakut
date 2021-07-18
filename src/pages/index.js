@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+import { useCommunities } from '../hooks/useCommunities'
+import { usePersons } from '../hooks/usePersons'
+import { useFollowers } from '../hooks/useFollowers'
+
 import { Grid } from '../components/Grid'
 import { Box } from '../components/Box'
 import { ProfileSideBar } from '../components/ProfileSideBar'
