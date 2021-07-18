@@ -101,19 +101,21 @@ export default function Home({ datoApiToken }) {
                   name="title"
                   aria-label="Qual vai ser o nome da sua comunidade?"
                   placeholder="Qual vai ser o nome da sua comunidade?"
-                onChange={({ target }) => setNewCommunitieName(target.value)}
-                value={newCommunitieName}
-              />
-              <input
-                type="text"
-                name="image"
-                aria-label="Coloque uma URL para usarmos de capa"
-                placeholder="Coloque uma URL para usarmos de capa"
-                onChange={({ target }) => setNewCommunitieURL(target.value)}
-                value={newCommunitieURL}
-              />
-              <button type="submit">Submit</button>
-            </form>
+                  title="Qual vai ser o nome da sua comunidade?"
+                  onChange={({ target }) => setNewCommunitieName(target.value)}
+                  value={newCommunitieName}
+                />
+                <input
+                  type="text"
+                  name="image"
+                  aria-label="Coloque uma URL para usarmos de capa"
+                  placeholder="Coloque uma URL para usarmos de capa"
+                  title="Coloque uma URL para usarmos de capa"
+                  onChange={({ target }) => setNewCommunitieUrlImage(target.value)}
+                  value={newCommunitieUrlImage}
+                />
+                <button type="submit">Criar</button>
+              </form>
             )}
             { whatToDo == 'addCommunityPerson' && (
               <form onSubmit={(event) => handleAddPerson(event)}>
