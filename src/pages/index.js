@@ -16,32 +16,10 @@ export default function Home({ datoApiToken }) {
   const [newCommunitieName, setNewCommunitieName] = useState('')
   const [newCommunitieUrlImage, setNewCommunitieUrlImage] = useState('')
   const githubUser = 'pedro-henrique-sb'
-  const favoritePersons = [
-    {
-      key: 'omariosouto',
-      name: 'omariosouto',
-      linkTo: 'https://github.com/omariosouto',
-      capeImgLink: 'https://github.com/omariosouto.png'
-    },
-    {
-      key: 'diego3g',
-      name: 'diego3g',
-      linkTo: 'https://github.com/diego3g',
-      capeImgLink: 'https://github.com/diego3g.png'
-    },
-    {
-      key: 'maykbrito',
-      name: 'maykbrito',
-      linkTo: 'https://github.com/maykbrito',
-      capeImgLink: 'https://github.com/maykbrito.png'
-    },
-    {
-      key: 'filipedeschamps',
-      name: 'filipedeschamps',
-      linkTo: 'https://github.com/filipedeschamps',
-      capeImgLink: 'https://github.com/filipedeschamps.png'
-    }
-  ]
+  const [whatToDo, setWhatToDo] = useState('')
+  const { communityPersons, addCommunityPerson } = usePersons(datoApiToken)
+  const [newPersonLogin, setNewPersonLogin] = useState('')
+  const { followers } = useFollowers(githubUser)
 
   function handlePreventDefault(event) {
     event.preventDefault()
