@@ -6,14 +6,14 @@ export function AsideBanner({ arrayTarget, title }) {
       <h2 className="smallTitle">{title} ({arrayTarget.length})</h2>
 
       <ul>
-        {arrayTarget.map(({key, name, linkTo, capeImgLink }, index) => {
+        {arrayTarget.map(({ id, name, linkTo, urlimage }, index) => {
           if(index >= 6) {
             return null
           } else {
             return (
-              <li key={key}>
+              <li key={id}>
                 <a href={linkTo}>
-                  <img src={capeImgLink} alt="Cape" />
+                  <img src={urlimage} alt="Cape" />
                   <span>{name}</span>
                 </a>
               </li>
