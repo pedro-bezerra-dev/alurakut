@@ -139,6 +139,7 @@ export default function Home({ datoApiToken }) {
         >
             <AsideBanner arrayTarget={communityPersons} title="Pessoas da comunidade" />
             <AsideBanner arrayTarget={communities} title="Comunidades" />
+            <AsideBanner arrayTarget={followers} title="Seguidores" />
         </div>
       </Grid>
     </>
