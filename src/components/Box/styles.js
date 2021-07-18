@@ -44,14 +44,14 @@ export const BoxStyled = styled.div`
     border-radius: 10000px;
     ::placeholder {
       color: #333333;
-      opacity: 1;
+      opacity: .5;
     }
   }
   button {
     border: 0;
     padding: 8px 12px;
     color: #FFFFFF;
-    border-radius: 10000px;
+    border-radius: 8px;
     background-color: #6F92BB;
   }
 `
