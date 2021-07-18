@@ -11,10 +11,10 @@ import { AsideBanner } from '../components/AsideBanner'
 
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../lib/AlurakutCommons'
 
-export default function Home() {
-  const [communities, setComunites] = useState([])
+export default function Home({ datoApiToken }) {
+  const { communities, createCommunity } = useCommunities(datoApiToken)
   const [newCommunitieName, setNewCommunitieName] = useState('')
-  const [newCommunitieURL, setNewCommunitieURL] = useState('')
+  const [newCommunitieUrlImage, setNewCommunitieUrlImage] = useState('')
   const githubUser = 'pedro-henrique-sb'
   const favoritePersons = [
     {
