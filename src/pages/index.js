@@ -168,7 +168,6 @@ export async function getServerSideProps(context) {
     }
   })
   const { isAuthenticated } = await Authentication.json()
-  console.log(isAuthenticated)
 
   const { githubUser } = jwt.decode(token)
 
