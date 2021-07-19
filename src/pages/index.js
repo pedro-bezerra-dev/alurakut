@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import nookies from 'nookies'
+import jwt from 'jsonwebtoken'
 
 import { useCommunities } from '../hooks/useCommunities'
 import { usePersons } from '../hooks/usePersons'
@@ -11,11 +13,10 @@ import { AsideBanner } from '../components/AsideBanner'
 
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../lib/AlurakutCommons'
 
-export default function Home({ datoApiToken }) {
+export default function Home({ datoApiToken, githubUser }) {
   const { communities, createCommunity } = useCommunities(datoApiToken)
   const [newCommunitieName, setNewCommunitieName] = useState('')
   const [newCommunitieUrlImage, setNewCommunitieUrlImage] = useState('')
-  const githubUser = 'pedro-henrique-sb'
   const [whatToDo, setWhatToDo] = useState('')
   const { communityPersons, addCommunityPerson } = usePersons(datoApiToken)
   const [newPersonLogin, setNewPersonLogin] = useState('')
@@ -148,10 +149,42 @@ export default function Home({ datoApiToken }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context)
+  const token = cookies.USER_TOKEN
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
+
+  const Authentication = await fetch('https://alurakut.vercel.app/api/auth', {
+    headers: {
+      Authorization: token
+    }
+  })
+  const { isAuthenticated } = await Authentication.json()
+  console.log(isAuthenticated)
+
+  const { githubUser } = jwt.decode(token)
+
+  if (!isAuthenticated) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      }
+    }
+  }
+
   return {
     props: {
-      datoApiToken: process.env.DATO_API_READ_ONLY_TOKEN
+      datoApiToken: process.env.DATO_API_READ_ONLY_TOKEN,
+      githubUser,
     },
   }
 }
