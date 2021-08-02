@@ -29,9 +29,28 @@ Access the version currently on air on [`https://alurakut-bay.vercel.app/`](http
 
 - Clone the repository
 - Install dependencies with `yarn`
+- Create project on DatoCMS according to [this structure](#creating-project-on-datocms)
+- Create `.env.local` file and add the environment variables `DATO_API_READ_ONLY_TOKEN` and `DATO_API_FULL_ACCESS_TOKEN` with the Read-only API token and Full-access API token, respectively, of the your project on DatoCMS
 - Start the server with `yarn dev`
 
 Access from [`localhost:3000`](http://localhost:3000) your browser
+
+## ☑️ Step by steps
+
+<a id="creating-project-on-datocms"/>
+
+### Creating project on DatoCMS
+
+On tab *Settings* in the your project dashboard create the follow models:
+- Community
+- Community person
+- Follower
+
+Each of these models must contain the fields:
+- Name
+- URL Image
+- Link to
+- Creator slug
 
 ---
 
